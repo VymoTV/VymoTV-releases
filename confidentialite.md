@@ -55,8 +55,10 @@ n'est vendue ni partagée avec des tiers.
   un film.
 - **Démarrage automatique** : rouvrir l'application à l'allumage du téléviseur, si vous
   l'avez demandé dans les réglages.
-- **Microphone** : uniquement pendant une dictée vocale que vous déclenchez. La
-  reconnaissance est celle d'Android ; VymoTV n'enregistre aucun son.
+
+Ce sont les quatre seules. VymoTV ne demande **pas** l'accès au microphone. La dictée vocale ouvre le service de
+reconnaissance d'Android, qui écoute à sa place et ne lui rend que le texte ; aucun son ne
+passe par l'application.
 
 ## Effacer vos données
 
