@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VymoTV Direct</title>
-<meta name="description" content="Le lecteur de votre abonnement, conçu pour la télécommande et le grand écran.">
+<meta name="description" content="Votre abonnement sur le grand écran : la mosaïque du direct, le programme télé, vos films et séries. Conçu pour la télécommande.">
 <link rel="icon" href="fiche/icone-512.png">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --fond:#07070c; --surface:#11121a; --surface-haute:#191b26; --contour:#252836;
@@ -19,47 +19,83 @@
         background:radial-gradient(900px 500px at 78% -8%,rgba(0,137,251,.18),transparent 60%),
                    radial-gradient(700px 420px at 8% 108%,rgba(61,220,255,.10),transparent 60%)}
   .page{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
-  header{text-align:center;padding:84px 0 56px}
-  header img{width:min(430px,80vw);display:block;margin:0 auto}
-  .accroche{margin-top:22px;font-size:22px;color:var(--texte-2)}
-  .precision{margin:14px auto 0;max-width:620px;color:var(--texte-3);font-size:16px}
+  a{color:inherit}
 
-  .code{margin:52px auto 0;max-width:640px;background:var(--surface);border:1px solid var(--contour);
-        border-radius:22px;padding:34px 30px;text-align:center}
+  /* — en-tête — */
+  header{text-align:center;padding:76px 0 0}
+  header img.logo{width:min(380px,72vw);display:block;margin:0 auto}
+  h1{margin:30px auto 0;max-width:780px;font-size:clamp(30px,4.6vw,46px);line-height:1.18;
+     font-weight:800;letter-spacing:-.5px}
+  h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent-clair),var(--accent));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+  .accroche{margin:20px auto 0;max-width:660px;font-size:19px;color:var(--texte-2)}
+
+  .boutons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+  .bouton{display:inline-block;padding:15px 30px;border-radius:13px;text-decoration:none;
+          font-weight:600;font-size:16px;transition:transform .15s ease,filter .15s ease}
+  .bouton:hover{transform:translateY(-2px);filter:brightness(1.1)}
+  .bouton.plein{background:linear-gradient(100deg,var(--accent-clair),var(--accent));color:#04121e}
+  .bouton.creux{background:var(--surface);border:1px solid var(--contour);color:var(--texte)}
+  .sous-bouton{margin-top:14px;font-size:14px;color:var(--texte-3)}
+
+  .vitrine{margin:54px auto 0;max-width:980px;border-radius:16px;border:1px solid var(--contour);
+           overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,137,251,.45)}
+  .vitrine img{width:100%;display:block}
+
+  /* — bandeau de chiffres — */
+  .chiffres{display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+            background:var(--contour);border:1px solid var(--contour);border-radius:15px;
+            overflow:hidden;margin:60px 0}
+  .chiffres div{background:var(--fond);padding:26px 20px;text-align:center}
+  .chiffres b{display:block;font-size:26px;font-weight:800;color:var(--accent-clair)}
+  .chiffres span{display:block;margin-top:4px;font-size:14px;color:var(--texte-3);
+                 letter-spacing:.6px}
+
+  /* — sections illustrées — */
+  section{padding:58px 0;border-top:1px solid var(--contour)}
+  .titre-section{font-size:15px;letter-spacing:2.4px;text-transform:uppercase;color:var(--texte-3);
+                 margin-bottom:34px;text-align:center}
+
+  .duo{display:grid;gap:40px;grid-template-columns:1fr 1fr;align-items:center;
+       padding:34px 0}
+  .duo + .duo{border-top:1px solid var(--contour)}
+  .duo img{width:100%;border-radius:13px;border:1px solid var(--contour);display:block}
+  .duo.inverse .texte{order:2}
+  .duo h3{font-size:24px;font-weight:700;letter-spacing:-.2px;margin-bottom:12px}
+  .duo p{color:var(--texte-2);font-size:16.5px}
+  .duo p + p{margin-top:12px}
+  @media(max-width:760px){
+    .duo{grid-template-columns:1fr;gap:22px}
+    .duo.inverse .texte{order:0}
+  }
+
+  /* — grille des autres atouts — */
+  .atouts{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .atout{background:var(--surface);border:1px solid var(--contour);border-radius:15px;padding:24px}
+  .atout h3{font-size:17px;font-weight:600;margin-bottom:8px}
+  .atout p{color:var(--texte-2);font-size:15px}
+
+  /* — code Downloader — */
+  .code{margin:0 auto;max-width:640px;background:var(--surface);border:1px solid var(--contour);
+        border-radius:22px;padding:32px 30px;text-align:center}
   .code .quoi{font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:var(--texte-3)}
-  .chiffres{margin:16px 0 6px;font-weight:800;font-size:clamp(46px,11vw,76px);letter-spacing:6px;
+  .code .valeur{margin:14px 0 6px;font-weight:800;font-size:clamp(40px,10vw,68px);letter-spacing:6px;
             background:linear-gradient(100deg,var(--accent-clair),var(--accent));
             -webkit-background-clip:text;background-clip:text;color:transparent}
   .code p{color:var(--texte-2);font-size:15px}
   .code code{background:var(--surface-haute);border:1px solid var(--contour);border-radius:7px;
              padding:2px 8px;font-size:14px}
 
-  .boutons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-  .bouton{display:inline-block;padding:15px 30px;border-radius:13px;text-decoration:none;
-          font-weight:600;font-size:16px;transition:transform .15s ease,filter .15s ease}
-  .bouton:hover{transform:translateY(-2px);filter:brightness(1.1)}
-  .bouton.plein{background:linear-gradient(100deg,var(--accent-clair),var(--accent));color:#04121e}
-  .bouton.creux{background:var(--surface);border:1px solid var(--contour);color:var(--texte)}
-
-  section{padding:64px 0;border-top:1px solid var(--contour)}
-  h2{font-size:15px;letter-spacing:2.4px;text-transform:uppercase;color:var(--texte-3);
-     margin-bottom:30px;text-align:center}
-  .ecrans{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-  .ecrans img{width:100%;border-radius:13px;border:1px solid var(--contour);display:block}
-
-  .atouts{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .atout{background:var(--surface);border:1px solid var(--contour);border-radius:15px;padding:24px}
-  .atout h3{font-size:17px;font-weight:600;margin-bottom:8px}
-  .atout p{color:var(--texte-2);font-size:15px}
-
-  ol{counter-reset:e;list-style:none;max-width:660px;margin:0 auto}
+  ol{counter-reset:e;list-style:none;max-width:660px;margin:34px auto 0}
   ol li{counter-increment:e;position:relative;padding:0 0 22px 52px;color:var(--texte-2)}
   ol li::before{content:counter(e);position:absolute;left:0;top:-2px;width:33px;height:33px;
                 border-radius:50%;background:var(--surface-haute);border:1px solid var(--contour);
                 color:var(--accent-clair);font-weight:700;display:grid;place-items:center;font-size:15px}
   ol li b{color:var(--texte);font-weight:600}
 
-  footer{padding:52px 0 72px;text-align:center;color:var(--texte-3);font-size:14px;
+  .avertissement{max-width:700px;margin:0 auto;text-align:center;color:var(--texte-3);font-size:15px}
+
+  footer{padding:50px 0 72px;text-align:center;color:var(--texte-3);font-size:14px;
          border-top:1px solid var(--contour)}
   footer a{color:var(--texte-2)}
 </style>
@@ -69,44 +105,124 @@
 <div class="page">
 
   <header>
-    <img src="fiche/logo.png" srcset="fiche/logo.png 1x, fiche/logo@2x.png 2x" alt="VymoTV">
-    <p class="accroche">Le lecteur de votre abonnement, conçu pour la télécommande et le grand écran.</p>
-    <p class="precision">VymoTV n'héberge et ne fournit aucun contenu. Il affiche celui de l'abonnement
-      que vous possédez déjà, et dont vous saisissez vous-même l'adresse et les identifiants.</p>
+    <img class="logo" src="fiche/logo.png" srcset="fiche/logo.png 1x, fiche/logo@2x.png 2x" alt="VymoTV">
 
-    <div class="code">
-      <div class="quoi">Code Downloader</div>
-      <div class="chiffres" id="code">bientôt</div>
-      <p>Ouvrez <code>Downloader</code> sur votre téléviseur et saisissez ce code.<br>
-        En attendant, le bouton ci-dessous télécharge directement l'APK.</p>
-    </div>
+    <h1>Votre abonnement mérite mieux <em>qu'une liste de chaînes.</em></h1>
+    <p class="accroche">VymoTV en fait une vraie télévision : l'émission en cours s'affiche sous
+      chaque chaîne, le programme tient sur un écran, vos films reprennent où vous les aviez
+      laissés. Tout à la télécommande, lisible depuis le canapé.</p>
 
     <div class="boutons">
       <a class="bouton plein" href="https://github.com/VymoTV/VymoTV-releases/releases/latest/download/VymoTV.apk">Télécharger l'APK</a>
-      <a class="bouton creux" href="https://github.com/VymoTV/VymoTV-releases/releases">Toutes les versions</a>
+      <a class="bouton creux" href="#installer">Installer avec Downloader</a>
+    </div>
+    <p class="sous-bouton">Android TV, Google TV, Fire TV et box Android · aucun compte VymoTV à créer</p>
+
+    <div class="vitrine">
+      <img src="fiche/vitrine-films.jpg" alt="L'écran des films de VymoTV, avec les affiches, les notes et les catégories">
     </div>
   </header>
 
+  <div class="chiffres">
+    <div><b>1,5 s</b><span>pour arriver à l'accueil</span></div>
+    <div><b>0</b><span>publicité, 0 traceur</span></div>
+    <div><b>4 flèches</b><span>et la touche OK</span></div>
+    <div><b>Hors ligne</b><span>le catalogue reste sur la TV</span></div>
+  </div>
+
   <section>
-    <h2>Ce qu'on y trouve</h2>
-    <div class="atouts">
-      <div class="atout"><h3>La télévision en direct</h3><p>Une mosaïque qui affiche sous chaque chaîne
-        l'émission en cours et sa barre de progression. Un appui long ouvre les favoris et la grille.</p></div>
-      <div class="atout"><h3>Le programme télé</h3><p>Les chaînes à gauche, leur journée à droite. Un champ
-        pour retrouver une chaîne par son nom, des rubriques pour réduire la liste.</p></div>
-      <div class="atout"><h3>Films et séries</h3><p>La lecture reprend là où vous vous étiez arrêté.
-        Favoris, recherche par titre, et une fiche par titre.</p></div>
-      <div class="atout"><h3>Pour toute la maison</h3><p>Un contrôle parental par code, un mode simplifié
-        qui réduit l'accueil à trois grandes cases, un réglage de très grand texte.</p></div>
-      <div class="atout"><h3>Conçu pour la télécommande</h3><p>Tout se fait aux quatre flèches et à la
-        touche OK. Lisible à trois mètres, et chaque écran rappelle ce que font les touches.</p></div>
-      <div class="atout"><h3>Sans publicité ni traceur</h3><p>Aucune régie, aucune mesure d'audience.
-        Vos identifiants restent sur l'appareil et ne vont qu'au serveur que vous avez indiqué.</p></div>
+    <p class="titre-section">Ce que ça change au quotidien</p>
+
+    <div class="duo">
+      <div class="texte">
+        <h3>On voit ce qui passe, pas des noms</h3>
+        <p>La mosaïque du direct affiche sous chaque chaîne l'émission en cours et une barre qui
+          dit où elle en est. On choisit avec les yeux, pas en lisant une liste.</p>
+        <p>Une rubrique « Récemment vues » remonte celles que vous venez de regarder, et un appui
+          long ouvre la chaîne : ses favoris, sa soirée, et le replay quand le serveur le permet.</p>
+      </div>
+      <img src="fiche/vitrine-direct.jpg" alt="La mosaïque des chaînes en direct, avec l'émission en cours sous chaque vignette">
+    </div>
+
+    <div class="duo inverse">
+      <div class="texte">
+        <h3>Le programme, sans chercher</h3>
+        <p>Les chaînes à gauche, leur journée à droite, une barre qui suit l'heure. Un champ de
+          recherche pour retrouver une chaîne par son nom, des filtres pour ne garder que le
+          sport, l'info ou les enfants.</p>
+        <p>C'est aussi là qu'on masque pour de bon une chaîne qui ne sert jamais. Elle disparaît
+          alors de la mosaïque aussi : réglé une fois, réglé partout.</p>
+      </div>
+      <img src="fiche/vitrine-programme.jpg" alt="Le programme télé : les chaînes à gauche, leur journée à droite">
+    </div>
+
+    <div class="duo">
+      <div class="texte">
+        <h3>Les films reprennent tout seuls</h3>
+        <p>Les affiches, la note, la catégorie : on reconnaît un film avant de lire son titre.
+          Et s'il reste en cours, la reprise est proposée directement depuis la liste — pas
+          besoin de rouvrir la fiche pour retrouver où on en était.</p>
+        <p>Les séries suivent le même principe, épisode par épisode.</p>
+      </div>
+      <img src="fiche/vitrine-reprise.jpg" alt="La rangée « Reprendre la lecture » en haut de l'écran des films">
+    </div>
+
+    <div class="duo inverse">
+      <div class="texte">
+        <h3>Un lecteur qui ne demande rien</h3>
+        <p>Barre de progression, sous-titres et pistes audio à portée d'OK, retour arrière quand
+          le serveur le permet. Chaque écran rappelle en bas ce que font les touches : personne
+          n'a besoin d'apprendre quoi que ce soit.</p>
+      </div>
+      <img src="fiche/vitrine-lecteur.jpg" alt="Le lecteur vidéo, avec la barre de progression et les rappels de touches">
+    </div>
+
+    <div class="duo">
+      <div class="texte">
+        <h3>Et une version pour ceux que ça dépasse</h3>
+        <p>Un réglage, et l'accueil ne garde que trois grandes portes : Direct, Films, Séries.
+          Le clavier, les réglages du lecteur et les informations d'abonnement disparaissent,
+          et le direct s'ouvre directement sur les favoris.</p>
+        <p>Un second réglage agrandit tous les textes. Un code à quatre chiffres peut verrouiller
+          les réglages, pour que rien ne se dérègle par accident.</p>
+      </div>
+      <img src="fiche/vitrine-simplifie.jpg" alt="L'accueil en mode simplifié : trois grandes portes et rien d'autre">
     </div>
   </section>
 
   <section>
-    <h2>L'installer</h2>
+    <p class="titre-section">Et aussi</p>
+    <div class="atouts">
+      <div class="atout"><h3>La recherche marche hors ligne</h3><p>Films, séries et chaînes déjà
+        reçus sont cherchés sur l'appareil. Deux lettres suffisent, et la dictée évite le clavier
+        quand la télécommande en a un micro.</p></div>
+      <div class="atout"><h3>Un contrôle parental</h3><p>Un code verrouille les catégories que vous
+        désignez, une par une. Il faut le saisir pour les ouvrir, et un réglage à part fait
+        disparaître les contenus réservés aux adultes.</p></div>
+      <div class="atout"><h3>Plusieurs abonnements</h3><p>On enregistre plusieurs accès et on passe
+        de l'un à l'autre depuis l'accueil. Chacun garde ses favoris, ses reprises et ses réglages.</p></div>
+      <div class="atout"><h3>Ça s'ouvre même quand ça rame</h3><p>Le catalogue et le programme
+        restent en mémoire sur le téléviseur. L'application s'affiche immédiatement et se met à
+        jour en arrière-plan, sans écran de chargement.</p></div>
+      <div class="atout"><h3>Rien ne sort de chez vous</h3><p>Aucune régie publicitaire, aucune
+        mesure d'audience, aucun rapport de plantage. Vos identifiants restent sur l'appareil et
+        ne partent qu'au serveur que vous avez indiqué.</p></div>
+      <div class="atout"><h3>Les mises à jour arrivent seules</h3><p>L'application vérifie s'il
+        existe une version plus récente et propose de l'installer. Pas de fichier à retélécharger
+        à la main tous les mois.</p></div>
+    </div>
+  </section>
+
+  <section id="installer">
+    <p class="titre-section">L'installer sur votre téléviseur</p>
+
+    <div class="code">
+      <div class="quoi">Code Downloader</div>
+      <div class="valeur">bientôt</div>
+      <p>Ouvrez <code>Downloader</code> sur votre téléviseur et saisissez ce code.<br>
+        En attendant, le bouton en haut de page télécharge directement l'APK.</p>
+    </div>
+
     <ol>
       <li>Depuis le Play Store de votre téléviseur, installez <b>Downloader</b> (l'application à l'icône orange).</li>
       <li>Ouvrez-la et saisissez le <b>code ci-dessus</b>, puis validez.</li>
@@ -116,18 +232,15 @@
   </section>
 
   <section>
-    <h2>À l'écran</h2>
-    <div class="ecrans">
-      <img src="fiche/05-direct.png" alt="La mosaïque des chaînes">
-      <img src="fiche/07-programme.png" alt="Le programme télé">
-      <img src="fiche/16-lecteur.png" alt="Le lecteur">
-      <img src="fiche/01-accueil.png" alt="L'accueil">
-    </div>
+    <p class="avertissement">VymoTV est un lecteur. Il n'héberge, ne fournit et ne vend aucun
+      contenu : il affiche celui de l'abonnement que vous possédez déjà, et dont vous saisissez
+      vous-même l'adresse et les identifiants.</p>
   </section>
 
   <footer>
-    <p>VymoTV · <a href="confidentialite.md">Politique de confidentialité</a></p>
-    <p style="margin-top:8px">Un abonnement compatible Xtream Codes est nécessaire. VymoTV ne le vend pas et ne le fournit pas.</p>
+    <p>VymoTV · <a href="confidentialite.md">Politique de confidentialité</a> ·
+      <a href="https://github.com/VymoTV/VymoTV-releases/releases">Toutes les versions</a></p>
+    <p style="margin-top:8px">Un abonnement compatible Xtream Codes est nécessaire.</p>
   </footer>
 
 </div>
