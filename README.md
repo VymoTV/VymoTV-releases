@@ -2,6 +2,9 @@
 
 Application Android TV pour abonnements Xtream Codes.
 
+L'interface existe en français, anglais, espagnol, portugais, allemand, italien, néerlandais
+et arabe ; elle suit la langue du téléviseur.
+
 Ce dépôt ne contient que les applications compilées. Le code source n'est pas public.
 
 Il est public pour une seule raison : les box installées chez les clients interrogent cette page
