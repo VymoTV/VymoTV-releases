@@ -69,6 +69,30 @@
     .duo.inverse .texte{order:0}
   }
 
+  /* — les langues — */
+  .langues{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+           margin-bottom:26px}
+  .langue{background:var(--surface);border:1px solid var(--contour);border-radius:13px;
+          padding:16px 18px;display:flex;align-items:center;gap:12px}
+  .langue .drapeau{font-size:24px;line-height:1}
+  .langue b{display:block;font-size:16px;font-weight:600}
+  .langue span{display:block;font-size:13px;color:var(--texte-3);margin-top:1px;
+               white-space:nowrap}
+  .sous-langues{max-width:720px;margin:0 auto;text-align:center;color:var(--texte-2);
+                font-size:16px}
+
+  /* — le tableau des réglages — */
+  .reglages{width:100%;border-collapse:collapse;font-size:15.5px;margin-top:8px}
+  .reglages td{padding:13px 16px;border-top:1px solid var(--contour);vertical-align:top}
+  .reglages tr:first-child td{border-top:0}
+  .reglages td:first-child{color:var(--texte);font-weight:600;white-space:nowrap;width:1%}
+  .reglages td:last-child{color:var(--texte-2)}
+  @media(max-width:640px){
+    .reglages, .reglages tbody, .reglages tr, .reglages td{display:block;width:auto}
+    .reglages td:first-child{padding-bottom:2px}
+    .reglages td:last-child{padding-top:0;border-top:0}
+  }
+
   /* — grille des autres atouts — */
   .atouts{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   .atout{background:var(--surface);border:1px solid var(--contour);border-radius:15px;padding:24px}
@@ -170,6 +194,16 @@
 
     <div class="duo inverse">
       <div class="texte">
+        <h3>Une fiche par titre</h3>
+        <p>Le résumé, la note, l'année, la durée, la réalisation, la distribution, le pays —
+          et, en dessous, les titres voisins de la même catégorie, pour ne pas repartir de la
+          liste quand celui-ci ne convient pas.</p>
+      </div>
+      <img src="fiche/vitrine-fiche.jpg" alt="La fiche d'un film, avec son affiche et son résumé">
+    </div>
+
+    <div class="duo inverse">
+      <div class="texte">
         <h3>Un lecteur qui ne demande rien</h3>
         <p>Barre de progression, sous-titres et pistes audio à portée d'OK, retour arrière quand
           le serveur le permet. Chaque écran rappelle en bas ce que font les touches : personne
@@ -189,6 +223,57 @@
       </div>
       <img src="fiche/vitrine-simplifie.jpg" alt="L'accueil en mode simplifié : trois grandes portes et rien d'autre">
     </div>
+
+    <div class="duo">
+      <div class="texte">
+        <h3>Un contrôle parental qui verrouille ce que vous désignez</h3>
+        <p>Un code à quatre chiffres protège les catégories que vous choisissez, une par une —
+          pas un interrupteur qui protège on ne sait quoi. Elles demandent le code pour
+          s'ouvrir, et un réglage à part fait disparaître les contenus réservés aux adultes.</p>
+        <p>Le même code peut verrouiller les réglages eux-mêmes, pour que rien ne se dérègle
+          par accident.</p>
+      </div>
+      <img src="fiche/vitrine-parental.jpg" alt="Le clavier du code à quatre chiffres">
+    </div>
+  </section>
+
+  <section>
+    <p class="titre-section">Huit langues</p>
+
+    <div class="langues">
+      <div class="langue"><span class="drapeau">🇫🇷</span><div><b>Français</b><span>France, Belgique</span></div></div>
+      <div class="langue"><span class="drapeau">🇬🇧</span><div><b>English</b><span>UK, US</span></div></div>
+      <div class="langue"><span class="drapeau">🇪🇸</span><div><b>Español</b><span>España</span></div></div>
+      <div class="langue"><span class="drapeau">🇵🇹</span><div><b>Português</b><span>Portugal, Brasil</span></div></div>
+      <div class="langue"><span class="drapeau">🇩🇪</span><div><b>Deutsch</b><span>Deutschland</span></div></div>
+      <div class="langue"><span class="drapeau">🇮🇹</span><div><b>Italiano</b><span>Italia</span></div></div>
+      <div class="langue"><span class="drapeau">🇳🇱</span><div><b>Nederlands</b><span>Nederland</span></div></div>
+      <div class="langue"><span class="drapeau">🌐</span><div><b>العربية</b><span>من اليمين لليسار</span></div></div>
+    </div>
+
+    <p class="sous-langues">L'interface suit la langue du téléviseur, sans rien à régler. Et si
+      quelqu'un du foyer préfère une autre langue que celle de l'écran, Android laisse la
+      choisir application par application. L'arabe se lit de droite à gauche, et l'interface se
+      retourne avec : le logo passe à droite, les portes se lisent dans le bon ordre. Les dates,
+      les heures et les nombres suivent la langue partout — « 28 septembre 2026 » ici,
+      « September 28, 2026 » là.</p>
+  </section>
+
+  <section>
+    <p class="titre-section">Tous les réglages</p>
+    <table class="reglages">
+      <tr><td>Mode simplifié</td><td>Les trois portes, le très grand texte, les rayons à garder, le verrouillage des réglages</td></tr>
+      <tr><td>Image et son</td><td>Qualité préférée, format de l'image, langue des dialogues et des sous-titres</td></tr>
+      <tr><td>Affichage</td><td>Taille du texte, couleur d'accent, écran de démarrage, animations, images de fond</td></tr>
+      <tr><td>Contenu</td><td>Pays affichés, contenus adultes, reprise de lecture, regroupement par qualité, chaînes masquées</td></tr>
+      <tr><td>Contrôle parental</td><td>Le code à quatre chiffres, les catégories verrouillées une par une</td></tr>
+      <tr><td>Mon abonnement</td><td>État, date d'expiration, adresse du serveur, mise à jour du contenu et de l'application</td></tr>
+      <tr><td>Lecture avancée</td><td>Mémoire tampon, décodage matériel, tunneling, pas de saut, seuil « terminé »</td></tr>
+      <tr><td>TV en direct</td><td>Zapping par numéro, numéros et logos, durée du bandeau, annonce de fin d'émission</td></tr>
+      <tr><td>Guide des programmes</td><td>Source (API du panel ou XMLTV), décalage horaire, jours de rattrapage, import complet</td></tr>
+      <tr><td>Serveur</td><td>Format de flux (TS ou HLS), mode compatible pour le rattrapage</td></tr>
+      <tr><td>Réseau et cache</td><td>Résolveur DNS chiffré, serveur relais, délais, réessais, fraîcheur du catalogue</td></tr>
+    </table>
   </section>
 
   <section>
@@ -197,9 +282,6 @@
       <div class="atout"><h3>La recherche marche hors ligne</h3><p>Films, séries et chaînes déjà
         reçus sont cherchés sur l'appareil. Deux lettres suffisent, et la dictée évite le clavier
         quand la télécommande en a un micro.</p></div>
-      <div class="atout"><h3>Un contrôle parental</h3><p>Un code verrouille les catégories que vous
-        désignez, une par une. Il faut le saisir pour les ouvrir, et un réglage à part fait
-        disparaître les contenus réservés aux adultes.</p></div>
       <div class="atout"><h3>Plusieurs abonnements</h3><p>On enregistre plusieurs accès et on passe
         de l'un à l'autre depuis l'accueil. Chacun garde ses favoris, ses reprises et ses réglages.</p></div>
       <div class="atout"><h3>Ça s'ouvre même quand ça rame</h3><p>Le catalogue et le programme
@@ -208,9 +290,6 @@
       <div class="atout"><h3>Rien ne sort de chez vous</h3><p>Aucune régie publicitaire, aucune
         mesure d'audience, aucun rapport de plantage. Vos identifiants restent sur l'appareil et
         ne partent qu'au serveur que vous avez indiqué.</p></div>
-      <div class="atout"><h3>Dans la langue du salon</h3><p>Français, anglais, espagnol,
-        portugais, allemand, italien, néerlandais et arabe — y compris l'écriture de droite à
-        gauche. L'application suit la langue du téléviseur, ou la sienne si vous préférez.</p></div>
       <div class="atout"><h3>Les mises à jour arrivent seules</h3><p>L'application vérifie s'il
         existe une version plus récente et propose de l'installer. Pas de fichier à retélécharger
         à la main tous les mois.</p></div>
