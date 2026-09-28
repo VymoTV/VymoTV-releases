@@ -14,8 +14,11 @@ que n'importe qui peut en extraire.
 
 ## Installer
 
-Prenez le fichier `.apk` de la dernière version dans [Releases](../../releases), copiez-le sur la
-box et ouvrez-le. Les mises à jour suivantes se font depuis l'application :
+Le plus simple : ouvrir **Downloader** sur la box et saisir le code **4795784**. Il pointe
+toujours sur la dernière version, il n'y a donc rien à refaire à chaque publication.
+
+Sinon, prenez le fichier `.apk` de la dernière version dans [Releases](../../releases),
+copiez-le sur la box et ouvrez-le. Les mises à jour suivantes se font depuis l'application :
 **Réglages → Mon abonnement → Mise à jour de l'application**.
 
 ---
